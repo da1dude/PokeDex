@@ -9,7 +9,7 @@ const middleware = require('./utils/middleware')
 // Import Routers  ////
 ///////////////////////
 const UserRouter = require('./controllers/userControllers')
-//const PlaceRouter = require('./controllers/placeControllers')
+const PokemonAllRouter = require('./controllers/pokemonControllers')
 
 //////////////////////////////////////////////////
 // Create the app object + set up view engine ////
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users', UserRouter)
-//app.use('/places', PlaceRouter)
+app.use('/pokemon', PokemonAllRouter)
 
 // error page
 app.get('/error', (req, res) => {

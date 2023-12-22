@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<div class="container center">
+    <h2 class="text-center"><%= poke.name %></h2>
+    <div class="container col text-center">
+        <img src="<%= poke.sprites.other.home.front_default %>" alt="coat of arms" class="coatOfArms">
+    </div>
+    <table class="table table-striped mt-3">
+        <thead>
+            <!-- <tr>
+                <th scope="col">Common Name</th>
+                <th scope="col">Capital</th>
+                <th scope="col">Region</th>
+                <th scope="col">Population</th>
+                <th scope="col">Flag</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row"><%= poke.name %></td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
+
+<%- include('../partials/footer') %>
