@@ -1,6 +1,26 @@
 <%- include('../partials/header') %>
 
 <div class="container center">
+    <% if (loggedIn) {%>
+        <h5>Capture Pokemon?</h5>
+        <form action="/pokemon/add" method="POST">
+            <fieldset>
+                <input hidden type="text" name="name" value="<%= poke.name %>">
+                <input hidden type="text" name="number" value="<%= poke.id %>">
+                <label for="customName">Give it a name!</label>
+                <input type="text" name="customeName" value="">
+
+                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="captured">
+                <label class="btn btn-primary" for="btn-check">Click to Favorite</label>
+
+            </fieldset>
+            <input type="submit" class="btn btn-success" value="Capture">
+        </form>
+    <% } else {%>
+        <p>Log in to capture and favorite Pokemon!</p>
+    <% } %>
+    <hr>
+    <a href="/places/all" class="btn btn-warning">Back to All Countries</a>
     <h2 class="text-center name-title"><%= poke.name %></h2>
     <div class="container col text-center">
         <img src="<%= poke.sprites.other.home.front_default %>" alt="coat of arms" class="show-image">

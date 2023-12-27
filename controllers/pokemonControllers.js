@@ -5,7 +5,7 @@ const express = require('express')
 const axios = require('axios')
 const allPokemonUrl = process.env.POKEMONALL_API_URL
 const nameSearchBaseUrl = process.env.C_BY_NAME_BASE_URL
-//const Place = require('../models/place')
+const Pokemon = require('../models/pokemon')
 
 /////////////////////
 // Create Router ////
@@ -37,6 +37,47 @@ router.get('/all', (req, res) => {
             res.redirect(`/error?error=${err}`)
         })
 })
+
+// POST -> /pokemon/captured
+// gets data from the all pokemon show page and adds to the users list
+router.post('/add', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+
+    const thePoke = req.body
+    thePoke.owner = userId
+    // default value for a checked checkbox is 'on'
+    // this line of code converts that two times
+    // which results in a boolean value
+    thePoke.favorite = !!thePoke.favorite
+
+    Pokemon.create(thePoke)
+        .then(newPoke => {
+            // res.send(newPlace)
+            res.redirect(`/pokemon/captured`)
+        })
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
+// GET -> /pokemon/captured
+// displays all the user's saved pokemon
+router.get('/captured', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    // query the db for all pokemon belonging to the logged in user
+    Pokemon.find({ owner: userId })
+        // display them in a list format
+        .then(userPokemon => {
+            res.render('pokemon/captured', { pokemon: userPokemon, username, loggedIn, userId })
+        })
+        // or display any errors
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
 
 // GET -> /pokemon/:name
 // API data show page -> least specific - goes under all more specific routes

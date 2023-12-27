@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+    <div class="container center">
+        <h2>All <%= username %>'s Pokemon</h2>
+        <hr>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Nick Name</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% pokemon.forEach((p) => { %>
+                    <tr>
+                        <td scope="row"><%= p.name %></td>
+                        <td scope="row"><%= p.customName %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+<%- include('../partials/footer') %>
