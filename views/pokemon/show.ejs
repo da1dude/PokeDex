@@ -1,26 +1,61 @@
 <%- include('../partials/header') %>
 
 <div class="container center">
-    <h2 class="text-center"><%= poke.name %></h2>
+    <h2 class="text-center name-title"><%= poke.name %></h2>
     <div class="container col text-center">
-        <img src="<%= poke.sprites.other.home.front_default %>" alt="coat of arms" class="coatOfArms">
+        <img src="<%= poke.sprites.other.home.front_default %>" alt="coat of arms" class="show-image">
     </div>
-    <table class="table table-striped mt-3">
+    <table style="width:50%" class="table table-striped mt-3 center text-center table-hover">
         <thead>
-            <!-- <tr>
-                <th scope="col">Common Name</th>
-                <th scope="col">Capital</th>
-                <th scope="col">Region</th>
-                <th scope="col">Population</th>
-                <th scope="col">Flag</th>
+            <tr>
+                <th scope="col">Species</th>
+                <th scope="col">Type</th>
+                <th scope="col">Number</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td scope="row"><%= poke.name %></td>
-            </tr> -->
+                <td scope="row" class="cap"><%= poke.name %></td>
+                <td scope="row" class="cap"><%= poke.types[1].type.name %></td>
+                <td scope="row"><%= poke.id %></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <table style="width:30%" class="table table-borderless mt-3 center table-hover">
+        <thead>
+            <tr>
+                <!-- <th>Stats</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">HP</th>
+                <td scope="col"> <%= poke.stats[0].base_stat %></td>
+            </tr>
+            <tr>
+                <th scope="row">Attack</th>
+                <td scope="col"> <%= poke.stats[1].base_stat %></td>
+            </tr>
+            <tr>
+                <th scope="row">Defense</th>
+                <td scope="col"> <%= poke.stats[2].base_stat %></td>
+            </tr>
+            <tr>
+                <th scope="row">Speed</th>
+                <td scope="col"> <%= poke.stats[5].base_stat %></td>
+            </tr>
+            <tr>
+                <th scope="row">Height</th>
+                <td scope="col"> <%= poke.height %></td>
+            </tr>
+            <tr>
+                <th scope="row">Weight</th>
+                <td scope="col"> <%= poke.weight %></td>
+            </tr>
         </tbody>
     </table>
 </div>
+
 
 <%- include('../partials/footer') %>

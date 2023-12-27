@@ -2,10 +2,11 @@
 
 <div class="container center">
     <div class="container row text-center">
-        <% pokemon.forEach(function(p) {%>
+        <% pokemon.forEach(function(p, index) {%>
             <div class="card mt-3 me-3 pokemonCard">
                 <div class="card-body">
-                    <h5 class="card-title"><%= p.name %></h5>
+                    <h5 class="card-title name-title"><%= p.name %></h5>
+                    <!-- <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/.png" alt="Poke Image"> </a> -->
                     <a href="/pokemon/<%= p.name %>" class="btn">Learn More</a>
                 </div>
             </div>

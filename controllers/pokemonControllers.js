@@ -23,7 +23,9 @@ router.get('/all', (req, res) => {
     axios(allPokemonUrl)
         // if we get data, render an index page
         .then(apiRes => {
+            //pokeNumber[pokeNumber.length -1]
             console.log('this came back from the api: \n', apiRes.data.results)
+            //console.log(pokeNumber)
             // apiRes.data is an array of pokemon objects
             // res.send(apiRes.data)
             //res.send(apiRes.data)
