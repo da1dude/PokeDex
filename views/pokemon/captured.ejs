@@ -1,21 +1,28 @@
 <%- include('../partials/header') %>
 
-    <div class="container center">
+<a href="/pokemon/all" class="btn btn-warning">Back to All Pokemon</a>
+    <div class="container center my-pokemon">
         <h2>All <%= username %>'s Pokemon</h2>
         <hr>
-        <table class="table table-striped mt-3">
+        <table class="table mt-3 table-hover">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Nick Name</th>
+                    <th scope="col">Poke Number</th>
+                    <th scope="col">Captured On</th>
+
+
 
                 </tr>
             </thead>
             <tbody>
                 <% pokemon.forEach((p) => { %>
-                    <tr>
-                        <td scope="row"><%= p.name %></td>
+                    <tr class="text-capitalize">
+                        <td scope="row"><a href="/pokemon/captured/<%= p.id %>"><%= p.name %></a></td>
                         <td scope="row"><%= p.customName %></td>
+                        <td scope="row"><%= p.number %></td>
+                        <td scope="row"><%= p.createdAt.toLocaleString() %></td>
                     </tr>
                 <% }) %>
             </tbody>

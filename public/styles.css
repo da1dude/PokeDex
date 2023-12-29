@@ -14,9 +14,26 @@
 
 .show-image {
     width: 30%;
+    margin: 0;
+    padding: 0;
 }
 
 .center {
     margin-left: auto;
     margin-right: auto;
+}
+
+.my-pokemon {
+    margin-top: 20px;
+}
+
+.all-poke-img {
+    width: 15%;
+    margin: 0;
+    padding: 0;
+}
+
+.card:hover{
+    box-shadow: 4px 4px 4px gainsboro;
+    transform:scale(1.1);
 }

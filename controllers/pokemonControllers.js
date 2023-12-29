@@ -23,13 +23,14 @@ router.get('/all', (req, res) => {
     axios(allPokemonUrl)
         // if we get data, render an index page
         .then(apiRes => {
-            //pokeNumber[pokeNumber.length -1]
-            console.log('this came back from the api: \n', apiRes.data.results)
-            //console.log(pokeNumber)
-            // apiRes.data is an array of pokemon objects
-            // res.send(apiRes.data)
-            //res.send(apiRes.data)
-            res.render('pokemon/index', { pokemon: apiRes.data.results, username, userId, loggedIn})
+            //console.log(apiRes)
+            const pokemon = apiRes.data.results.map((data, index) => ({
+                name: data.name,
+                id: index + 1,
+                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
+            }))
+            //console.log(pokemon)
+            res.render('pokemon/index', { pokemon, username, userId, loggedIn})
         })
         // if something goes wrong, display an error page
         .catch(err => {
@@ -72,6 +73,29 @@ router.get('/captured', (req, res) => {
             res.render('pokemon/captured', { pokemon: userPokemon, username, loggedIn, userId })
         })
         // or display any errors
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
+// GET -> /pokemon/:id
+// Will display a single instance of a user's saved pokemon
+router.get('/captured/:id', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    console.log(req.body)
+    // could use destructuring, but no need with one item
+    // const { placeName } = req.params
+    // make our api call
+    //axios(`${nameSearchBaseUrl}${pokeName}`)
+    // find a specific place using the id
+    Pokemon.findById(req.params.id)
+        // display a user-specific show pages
+        .then(thePoke => {
+            // res.send(thePoke)
+            res.render('pokemon/capturedDetail', { poke: thePoke, username, loggedIn, userId })
+        })
+        // send an error page if something goes wrong
         .catch(err => {
             console.log('error')
             res.redirect(`/error?error=${err}`)

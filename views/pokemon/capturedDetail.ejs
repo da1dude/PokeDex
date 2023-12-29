@@ -4,7 +4,7 @@
     <a href="/pokemon/all" class="btn btn-warning">Back to All Pokemon</a>
     <h2 class="text-center name-title"><%= poke.name %></h2>
     <div class="container col text-center">
-        <img src="<%= poke.sprites.other.home.front_default %>" alt="pokeemon" class="show-image">
+
     </div>
 
     <hr>
@@ -40,7 +40,7 @@
         <tbody>
             <tr>
                 <td scope="row" class="cap"><%= poke.name %></td>
-                <td scope="row" class="cap"><%= poke.types[1].type.name %></td>
+
                 <td scope="row" class="cap"><%= poke.id %></td> 
 
 
@@ -51,25 +51,25 @@
     <table style="width:30%" class="table table-borderless mt-3 center table-hover">
         <thead>
             <tr>
-                <!-- <th>Stats</th> -->
+
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th scope="row">HP</th>
-                <td scope="col"> <%= poke.stats[0].base_stat %></td>
+
             </tr>
             <tr>
                 <th scope="row">Attack</th>
-                <td scope="col"> <%= poke.stats[1].base_stat %></td>
+
             </tr>
             <tr>
                 <th scope="row">Defense</th>
-                <td scope="col"> <%= poke.stats[2].base_stat %></td>
+
             </tr>
             <tr>
                 <th scope="row">Speed</th>
-                <td scope="col"> <%= poke.stats[5].base_stat %></td>
+
             </tr>
             <tr>
                 <th scope="row">Height</th>
