@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
 
 <div class="container center">
-    <div class="container row text-center justify-content-center">
+    <div class="container row text-center ">
         <% pokemon.forEach(function(p) {%>
-            <div style="width:14rem" class="card mt-4 me-4 card:hover">
-                <img src="<%= p.image %>" alt="poke-image" class="card-img-top">
+            <div style="width:14rem" class="card mt-4 me-4 card:hover ">
+                <img src="<%= p.image %>" alt="poke-image" class="card-img-top all-poke-img">
                 <div class="card-body">
                     <h5 class="card-title name-title"><%= p.name %></h5>
                     <a href="/pokemon/<%= p.name %>" class="btn">Learn More</a>

@@ -13,7 +13,7 @@
 }
 
 .show-image {
-    width: 30%;
+    width: 20%;
     margin: 0;
     padding: 0;
 }
@@ -25,12 +25,6 @@
 
 .my-pokemon {
     margin-top: 20px;
-}
-
-.all-poke-img {
-    width: 15%;
-    margin: 0;
-    padding: 0;
 }
 
 .card:hover{

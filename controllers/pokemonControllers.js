@@ -46,10 +46,12 @@ router.post('/add', (req, res) => {
 
     const thePoke = req.body
     thePoke.owner = userId
+    console.log(req.body)
     // default value for a checked checkbox is 'on'
     // this line of code converts that two times
     // which results in a boolean value
     thePoke.favorite = !!thePoke.favorite
+    console.log(req.body)
 
     Pokemon.create(thePoke)
         .then(newPoke => {
@@ -96,6 +98,50 @@ router.get('/captured/:id', (req, res) => {
             res.render('pokemon/capturedDetail', { poke: thePoke, username, loggedIn, userId })
         })
         // send an error page if something goes wrong
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
+
+// UPDATE -> /pokemon/update/:id
+router.put('/update/:id', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    // target the specific pokemon
+    const pokeId = req.params.id
+    const theUpdatedPoke = req.body
+
+    // sometimes mean hackers try to steal stuff
+    // remove the ownership from req.body(even if it isn't sent)
+    // then reassign using the session info
+    delete theUpdatedPoke.owner
+    theUpdatedPoke.owner = userId
+
+    // default value for a checked checkbox is 'on'
+    // this line of code converts that two times
+    // which results in a boolean value
+
+    theUpdatedPoke.favorite = !!theUpdatedPoke.favorite
+
+    console.log('this is req.body', theUpdatedPoke)
+    // find the place
+    Pokemon.findById(pokeId)
+        // check for authorization(aka ownership)
+        // if they are the owner, allow update and refresh the page
+        .then(foundPoke => {
+            // determine if loggedIn user is authorized to update this(aka, the owner)
+            if (foundPoke.owner == userId) {
+                // here is where we update
+                return foundPoke.updateOne(theUpdatedPoke)
+            } else {
+                // if the loggedIn user is NOT the owner
+                res.redirect(`/error?error=You%20Are%20Not%20Allowed%20to%20Update%20this%20Poke`)
+            }
+        })
+        .then(returnedPoke => {
+            res.redirect(`/pokemon/captured/${pokeId}`)
+        })
+        // if not, send error
         .catch(err => {
             console.log('error')
             res.redirect(`/error?error=${err}`)

@@ -2,24 +2,22 @@
 
 <div class="container center">
     <a href="/pokemon/all" class="btn btn-warning">Back to All Pokemon</a>
-    <h2 class="text-center name-title"><%= poke.name %></h2>
+    <h2 class="text-center name-title"><%= poke.customName %></h2>
     <div class="container col text-center">
-
+        <img src="<%= poke.img %>" alt="pokeemon" class="show-image">
     </div>
 
     <hr>
 
     <% if (loggedIn) {%>
     <div class="d-flex justify-content-center">
-        <form class="align-items-center" action="/pokemon/add" method="POST">
+        <form class="align-items-center" action="/pokemon/update/<%= poke._id %>?_method=PUT" method="POST">
             <fieldset class="align-items-center">
-                <input hidden type="text" name="name"  value="<%= poke.name %>">
-                <input hidden type="text" name="number" value="<%= poke.id %>">
-                <label for="customName">Give it a name!</label>
-                <input type="text" name="customName">
-                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="captured">
+                <label for="customName">Change Name?</label>
+                <input type="text" name="customName" value="<%= poke.customName %>">
+                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="favorite">
                 <label class="btn btn-primary" for="btn-check">Click to Favorite</label>
-                <input type="submit" class="btn btn-success" value="Capture">
+                <input type="submit" class="btn btn-success" value="Update">
             </fieldset>
         </form>
     <% } else {%>
@@ -40,8 +38,9 @@
         <tbody>
             <tr>
                 <td scope="row" class="cap"><%= poke.name %></td>
-
-                <td scope="row" class="cap"><%= poke.id %></td> 
+                <!-- pokemon can have more than one type. Using .map() to grab each -->
+                <td scope="row" class="cap"><%= poke.type %></td>
+                <td scope="row" class="cap"><%= poke.number %></td> 
 
 
             </tr>
@@ -51,25 +50,25 @@
     <table style="width:30%" class="table table-borderless mt-3 center table-hover">
         <thead>
             <tr>
-
+                <!-- <th>Stats</th> -->
             </tr>
         </thead>
         <tbody>
             <tr>
                 <th scope="row">HP</th>
-
+                <td scope="col"> <%= poke.hp %></td>
             </tr>
             <tr>
                 <th scope="row">Attack</th>
-
+                <td scope="col"> <%= poke.attack %></td>
             </tr>
             <tr>
                 <th scope="row">Defense</th>
-
+                <td scope="col"> <%= poke.defense %></td>
             </tr>
             <tr>
                 <th scope="row">Speed</th>
-
+                <td scope="col"> <%= poke.speed %></td>
             </tr>
             <tr>
                 <th scope="row">Height</th>

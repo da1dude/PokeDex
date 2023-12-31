@@ -15,9 +15,19 @@
             <fieldset class="align-items-center">
                 <input hidden type="text" name="name"  value="<%= poke.name %>">
                 <input hidden type="text" name="number" value="<%= poke.id %>">
+                <input hidden type="text" name="type" value="<%= poke.types.map(function(type)
+                { return type.type.name.charAt(0) + type.type.name.slice(1)}).join(' , '); %>">
+                <input hidden type="text" name="species" value="<%= poke.name %>">
+                <input hidden type="text" name="hp" value="<%= poke.stats[0].base_stat %>">
+                <input hidden type="text" name="attack" value="<%= poke.stats[1].base_stat %>">
+                <input hidden type="text" name="defense" value="<%= poke.stats[2].base_stat %>">
+                <input hidden type="text" name="speed" value="<%= poke.stats[5].base_stat %>">
+                <input hidden type="text" name="height" value="<%= poke.height %>">
+                <input hidden type="text" name="weight" value="<%= poke.weight %>">
+                <input hidden type="text" name="img" value="<%= poke.sprites.other.home.front_default %>">
                 <label for="customName">Give it a name!</label>
                 <input type="text" name="customName">
-                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="captured">
+                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="favorite">
                 <label class="btn btn-primary" for="btn-check">Click to Favorite</label>
                 <input type="submit" class="btn btn-success" value="Capture">
             </fieldset>
@@ -40,7 +50,9 @@
         <tbody>
             <tr>
                 <td scope="row" class="cap"><%= poke.name %></td>
-                <td scope="row" class="cap"><%= poke.types[1].type.name %></td>
+                <!-- pokemon can have more than one type. Using .map() to grab each -->
+                <td scope="row" class="cap"><%= poke.types.map(function(type)
+                    { return type.type.name.charAt(0) + type.type.name.slice(1)}).join(' , '); %></td>
                 <td scope="row" class="cap"><%= poke.id %></td> 
 
 

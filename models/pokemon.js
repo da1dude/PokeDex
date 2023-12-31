@@ -12,8 +12,17 @@ const { Schema, model } = mongoose
 const pokemonSchema = new Schema({
     name: { type: String, required: true },
     number: { type: String, required: true },
+    type: { type: String},
     customName: { type: String},
+    species: { type: String},
     favorite: { type: Boolean },
+    hp: { type: String},
+    attack: { type: String},
+    defense: { type: String},
+    speed: { type: String},
+    height: { type: String},
+    weight: { type: String},
+    img: { type: String},
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
