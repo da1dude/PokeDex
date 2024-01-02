@@ -6,6 +6,23 @@ const mongoose = require('../utils/connection')
 // destructuring the Schema and model from mongoose
 const { Schema, model } = mongoose
 
+
+/////////////////////////
+// Schema definition ////
+/////////////////////////
+
+const notesSchema = new Schema({
+    content: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    owner: { tpye: String }
+}, {
+    timestamps: true
+})
+
+
 /////////////////////////
 // Schema definition ////
 /////////////////////////
@@ -27,7 +44,8 @@ const pokemonSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    }
+    },
+    notes: [notesSchema]
 }, {
     timestamps: true
 })

@@ -23,6 +23,12 @@
         <form class="ms-3" action="/pokemon/delete/<%= poke._id %>?_method=DELETE" method="POST">
             <input type="submit" class="btn btn-danger" value="Release">
         </form>
+        <form id="add-notes-form" method="POST"
+            action="/pokemon/captured/<%= poke._id %>/notes">
+            <label>Note:</label>
+            <textarea name="content"></textarea>
+            <input type="submit" class="btn btn-success" value="Add Note">
+        </form>
     <% } else {%>
         <p>Log in to capture and favorite Pokemon!</p>
     <% } %>
