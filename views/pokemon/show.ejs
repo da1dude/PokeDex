@@ -4,7 +4,7 @@
     <a href="/pokemon/all" class="btn btn-warning">Back to All Pokemon</a>
     <h2 class="text-center name-title"><%= poke.name %></h2>
     <div class="container col text-center">
-        <img src="<%= poke.sprites.other.home.front_default %>" alt="pokeemon" class="show-image">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png" alt="pokemon" class="show-image">
     </div>
 
     <hr>
@@ -24,7 +24,7 @@
                 <input hidden type="text" name="speed" value="<%= poke.stats[5].base_stat %>">
                 <input hidden type="text" name="height" value="<%= poke.height %>">
                 <input hidden type="text" name="weight" value="<%= poke.weight %>">
-                <input hidden type="text" name="img" value="<%= poke.sprites.other.home.front_default %>">
+                <input hidden type="text" name="img" value="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png">
                 <label for="customName">Give it a name!</label>
                 <input type="text" name="customName">
                 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="favorite">
@@ -39,7 +39,7 @@
 
     <hr>
 
-    <table style="width:50%" class="table table-striped mt-3 center text-center table-hover">
+    <table style="width:50%" class="table mt-3 center text-center table-hover">
         <thead>
             <tr>
                 <th scope="col">Species</th>

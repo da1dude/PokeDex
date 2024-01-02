@@ -15,10 +15,13 @@
             <fieldset class="align-items-center">
                 <label for="customName">Change Name?</label>
                 <input type="text" name="customName" value="<%= poke.customName %>">
-                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="favorite">
+                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="favorite" <%= poke.favorite ? 'checked' : '' %>>
                 <label class="btn btn-primary" for="btn-check">Click to Favorite</label>
                 <input type="submit" class="btn btn-success" value="Update">
             </fieldset>
+        </form>
+        <form class="ms-3" action="/pokemon/delete/<%= poke._id %>?_method=DELETE" method="POST">
+            <input type="submit" class="btn btn-danger" value="Release">
         </form>
     <% } else {%>
         <p>Log in to capture and favorite Pokemon!</p>
@@ -27,7 +30,7 @@
 
     <hr>
 
-    <table style="width:50%" class="table table-striped mt-3 center text-center table-hover">
+    <table style="width:50%" class="table mt-3 center text-center table-hover">
         <thead>
             <tr>
                 <th scope="col">Species</th>
@@ -38,7 +41,6 @@
         <tbody>
             <tr>
                 <td scope="row" class="cap"><%= poke.name %></td>
-                <!-- pokemon can have more than one type. Using .map() to grab each -->
                 <td scope="row" class="cap"><%= poke.type %></td>
                 <td scope="row" class="cap"><%= poke.number %></td> 
 

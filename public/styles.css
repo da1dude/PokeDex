@@ -1,4 +1,9 @@
 
+body {
+    background-color: whitesmoke
+    /* background-image: url("poke-background-4.jpeg");
+    background-size: 100%; */
+}
 
 .logInBox {
     margin-top: 200px;
@@ -27,7 +32,15 @@
     margin-top: 20px;
 }
 
+.card{
+    box-shadow: 5px 5px 5px gainsboro;
+}
+
 .card:hover{
-    box-shadow: 4px 4px 4px gainsboro;
+    box-shadow: 5px 5px 5px gainsboro;
     transform:scale(1.1);
+}
+
+table tr td, table tr th{
+    background-color: rgba(245,245,245, 0.3) !important;
 }

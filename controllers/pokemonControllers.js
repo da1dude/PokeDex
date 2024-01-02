@@ -27,7 +27,7 @@ router.get('/all', (req, res) => {
             const pokemon = apiRes.data.results.map((data, index) => ({
                 name: data.name,
                 id: index + 1,
-                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
+                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png`,
             }))
             //console.log(pokemon)
             res.render('pokemon/index', { pokemon, username, userId, loggedIn})
@@ -148,6 +148,37 @@ router.put('/update/:id', (req, res) => {
         })
 })
 
+// DELETE -> /pokemon/delete/:id
+// Remove pokemon from a user's list, and is only available to authorized user
+router.delete('/delete/:id', (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    // target the specific place
+    const pokeId = req.params.id
+    // find it in the database
+    Pokemon.findById(pokeId)
+        // delete it 
+        .then(poke => {
+            // determine if loggedIn user is authorized to delete this(aka, the owner)
+            if (poke.owner == userId) {
+                // here is where we delete
+                return poke.deleteOne()
+            } else {
+                // if the loggedIn user is NOT the owner
+                res.redirect(`/error?error=You%20Are%20Not%20Allowed%20to%20Delete%20this%20Pokemon`)
+            }
+        })
+        // redirect to another page
+        .then(deletedPoke => {
+            console.log('this was returned from deleteOne', deletedPoke)
+
+            res.redirect('/pokemon/captured')
+        })
+        // if err -> send to err page
+        .catch(err => {
+            console.log('error')
+            res.redirect(`/error?error=${err}`)
+        })
+})
 
 // GET -> /pokemon/:name
 // API data show page -> least specific - goes under all more specific routes
