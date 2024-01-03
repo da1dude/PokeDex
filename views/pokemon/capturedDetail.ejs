@@ -23,10 +23,9 @@
         <form class="ms-3" action="/pokemon/delete/<%= poke._id %>?_method=DELETE" method="POST">
             <input type="submit" class="btn btn-danger" value="Release">
         </form>
-        <form id="add-notes-form" method="POST"
-            action="/pokemon/captured/<%= poke._id %>/notes">
+        <form class="ms-3" id="add-notes-form" method="POST" action="/pokemon/captured/<%= poke._id %>/notes">
             <label>Note:</label>
-            <textarea name="content"></textarea>
+            <input type="text" name="content" value="">
             <input type="submit" class="btn btn-success" value="Add Note">
         </form>
     <% } else {%>
@@ -55,7 +54,7 @@
         </tbody>
     </table>
     <hr>
-    <table style="width:30%" class="table table-borderless mt-3 center table-hover">
+    <table style="width:20%" class="table table-borderless mt-3 center table-hover">
         <thead>
             <tr>
                 <!-- <th>Stats</th> -->
@@ -88,6 +87,38 @@
             </tr>
         </tbody>
     </table>
+
+
+    <% if (loggedIn && poke.notes.length) { %>
+        <table style="width:40%" class="table table-borderless mt-3 center table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% poke.notes.forEach(function(n) { %>
+                <tr>
+                    <td><%= n.createdAt.toLocaleDateString() %></td>
+                    <td><%= n.content %></td>
+                    <td>
+                        <form action="/notes/<%= n._id %>?_method=DELETE" method="POST">
+                            <button type="submit">🗑️</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+            </tbody>
+        </table>
+    <% } else { %>
+        <h5>No Reviews Yet</h5>
+    <% } %>
+
+
 </div>
 
 

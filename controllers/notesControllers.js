@@ -17,51 +17,63 @@ const router = express.Router()
 ////////////////////////////
 
 
+
 // POST -> /pokemon/captured/notes/:id
-// router.post('/pokemon/captured/:id/notes', async (req, res) => {
-//     const { username, loggedIn, userId } = req.session
-//     const poke = await Pokemon.findById(req.params.id);
-//     console.log('this is req.params:', req.params)
-
-//     const theNote = req.body
-//     theNote.owner = userId
-//     console.log('this is req.body', req.body)
-
-//     poke.notes.push(theNote)
-//         .then(newNote => {
-//             poke.save()
-//             res.redirect(`/pokemon/captured/`)
-//         })
-//         .catch(err => {
-//             console.log('error')
-//             res.redirect(`/error?error=${err}`)
-//         })
-// })
-
-
 router.post('/pokemon/captured/:id/notes', (req, res) => {
     const { username, loggedIn, userId } = req.session
-    const poke = Pokemon.findById(req.params.id);
-    console.log('this is req.params:', req.params)
-
     const theNote = req.body
-    theNote.owner = userId
-    console.log('this is req.body', req.body)
-    // default value for a checked checkbox is 'on'
-    // this line of code converts that two times
-    // which results in a boolean value
-    console.log(theNote)
-
-    Pokemon.notes.create(theNote)
-        .then(newNote => {
-            // res.send(newPlace)
-            res.redirect(`/pokemon/captured`)
+    theNote.user = userId
+    Pokemon.findById(req.params.id)
+        .then(poke => {
+            poke.notes.push(req.body)
+            return poke.save()
+        })
+        .then(savedPoke => {
+            res.redirect(`/pokemon/captured/${req.params.id}`)
         })
         .catch(err => {
             console.log('error')
             res.redirect(`/error?error=${err}`)
         })
 })
+
+
+router.delete('/notes/:id', async (req, res) => {
+    const { username, loggedIn, userId } = req.session
+    const poke = await Pokemon.findOne({ 'notes._id': req.params.id, 'notes.user': req.user._id });
+    // Rogue user!
+    console.log(poke)
+    if (!poke) return res.redirect(`/pokemon/captured/${req.params.id}`)
+    // Remove the review using the remove method available on Mongoose arrays
+    console.log(req.params.id)
+    poke.notes.remove(req.params.id);
+    // Save the updated movie doc
+    await poke.save();
+    // Redirect back to the movie's show view
+    res.redirect(`/pokemon/captured/${req.params.id}`)
+})
+
+
+
+// router.post('/pokemon/captured/:id/notes', async (req, res) => {
+//     const { username, loggedIn, userId } = req.session
+//     const poke = await Pokemon.findById(req.params.id);
+//     console.log('this is req.params:', req.params)
+
+//     const theNote = req.body
+//     theNote.user = userId
+//     console.log('this is req.body', req.body)
+//     console.log('this is theNote', theNote)
+
+//     poke.notes.push(theNote)
+//         try {
+//             await poke.save()
+//             res.redirect(`/pokemon/captured/${req.params.id}`)
+//         } catch (err) {
+//             console.log(err)
+//         }
+// })
+
 
 
 /////////////////////

@@ -42,5 +42,5 @@ body {
 }
 
 table tr td, table tr th{
-    background-color: rgba(245,245,245, 0.3) !important;
+    background-color: rgba(245, 245, 245, 0) !important;
 }
