@@ -1,6 +1,6 @@
 
 body {
-    background-color: whitesmoke
+    background-color: whitesmoke;
     /* background-image: url("poke-background-4.jpeg");
     background-size: 100%; */
 }
@@ -43,4 +43,15 @@ body {
 
 table tr td, table tr th{
     background-color: rgba(245, 245, 245, 0) !important;
+}
+
+.img-td {
+    border: none;
+    margin: 0px;
+    padding: 0;
+    border-spacing: 0px;
+}
+
+bg1 {
+    background-image: url("poke-background-4.jpeg")
 }

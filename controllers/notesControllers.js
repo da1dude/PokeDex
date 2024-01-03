@@ -40,17 +40,15 @@ router.post('/pokemon/captured/:id/notes', (req, res) => {
 
 router.delete('/notes/:id', async (req, res) => {
     const { username, loggedIn, userId } = req.session
-    const poke = await Pokemon.findOne({ 'notes._id': req.params.id, 'notes.user': req.user._id });
+    const poke = await Pokemon.findOne({ 'notes._id': req.params.id, 'notes.user': userId });
     // Rogue user!
-    console.log(poke)
-    if (!poke) return res.redirect(`/pokemon/captured/${req.params.id}`)
-    // Remove the review using the remove method available on Mongoose arrays
-    console.log(req.params.id)
+    if (!poke) return res.redirect(`/pokemon/captured/${poke._id}`)
+    // Remove the note using the remove method available on Mongoose arrays
     poke.notes.remove(req.params.id);
-    // Save the updated movie doc
+    // Save the updated poke doc
     await poke.save();
-    // Redirect back to the movie's show view
-    res.redirect(`/pokemon/captured/${req.params.id}`)
+    // Redirect back to the poke's show view
+    res.redirect(`/pokemon/captured/${poke._id}`)
 })
 
 

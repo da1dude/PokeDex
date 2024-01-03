@@ -48,8 +48,6 @@
                 <td scope="row" class="cap"><%= poke.name %></td>
                 <td scope="row" class="cap"><%= poke.type %></td>
                 <td scope="row" class="cap"><%= poke.number %></td> 
-
-
             </tr>
         </tbody>
     </table>
@@ -90,7 +88,7 @@
 
 
     <% if (loggedIn && poke.notes.length) { %>
-        <table style="width:40%" class="table table-borderless mt-3 center table-hover">
+        <table style="width:60%" class="table table-borderless mt-3 table-hover center">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -115,7 +113,7 @@
             </tbody>
         </table>
     <% } else { %>
-        <h5>No Reviews Yet</h5>
+        <h5>No Notes Yet</h5>
     <% } %>
 
 

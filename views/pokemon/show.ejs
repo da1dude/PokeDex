@@ -7,7 +7,7 @@
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png" alt="pokemon" class="show-image">
     </div>
 
-    <hr>
+    
 
     <% if (loggedIn) {%>
     <div class="d-flex justify-content-center">
@@ -33,7 +33,9 @@
             </fieldset>
         </form>
     <% } else {%>
-        <p>Log in to capture and favorite Pokemon!</p>
+        <div style="text-align:center">
+            <h4>Log in to capture and favorite Pokemon!</h4>
+        </div>
     <% } %>
     </div>
 
