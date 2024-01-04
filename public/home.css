@@ -1,12 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap');
+
 
 body {
     /* background-color: whitesmoke; */
     background-image: url("pokemon3.webp");
-    background-image: cover;
+    /* background-image: cover; */
     background-repeat: no-repeat;
 }
 
 .jumbotron {
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     border-radius: 10px;
+    background-color: rgba(224, 255, 255, 0.391)
+}
+
+.jumbo-title {
+    font-family: 'Seymour One', sans-serif;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+}
+
+.jumbo-text {
+    font-family: 'Seymour One', sans-serif;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+    1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
