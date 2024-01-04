@@ -52,6 +52,9 @@ table tr td, table tr th{
     border-spacing: 0px;
 }
 
-bg1 {
-    background-image: url("poke-background-4.jpeg")
+.auth {
+    border-radius: 10px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 6px 4px 8px -2px;
 }

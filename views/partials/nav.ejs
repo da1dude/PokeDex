@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="d-flex container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../public/pokeball1.png" width="30" height="30" alt="">
+        </a>
         <a href="/" class="navbar-brand me-3">PokeDex</a>
         <% if (loggedIn) {%>
             <a href="/pokemon/captured" class="nav-link text-warning me-5">Hello <%= username %></a>
