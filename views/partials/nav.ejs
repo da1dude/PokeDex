@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm fixed-top bg-secondary navbar-dark">
     <div class="d-flex container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand me-3" href="#">
             <img src="/pokeball3.png" width="30" height="30" alt="">
         </a>
-        <a href="/" class="navbar-brand me-3">PokeDex</a>
+        <a href="/" class="navbar-brand">PokeDex</a>
         <% if (loggedIn) {%>
             <a href="/pokemon/captured" class="nav-link text-warning me-5">Hello <%= username %></a>
         <% } %>
@@ -18,7 +18,7 @@
                 </div>
                 <a href="/users/logout" class="nav-link text-light me-3 ms-auto">Log Out</a>
             <%} else {%>
-                <a href="/pokemon/all" class="nav-link text-light me-3 mx-auto">All Pokemon</a>
+                <a href="/pokemon/all" class="nav-link text-light me-5 mx-auto">All Pokemon</a>
                 <div class="ms-auto">
                 <a href="/users/signup" class="nav-link text-light me-3">Sign Up</a>
                 <a href="/users/login" class="nav-link text-light me-3">Log In</a>
