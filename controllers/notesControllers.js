@@ -2,7 +2,7 @@
 // Import Dependencies ////
 ///////////////////////////
 const express = require('express')
-const axios = require('axios')
+// const axios = require('axios')
 // const allPokemonUrl = process.env.POKEMONALL_API_URL
 // const nameSearchBaseUrl = process.env.C_BY_NAME_BASE_URL
 const Pokemon = require('../models/pokemon')
@@ -18,7 +18,7 @@ const router = express.Router()
 
 
 
-// POST -> /pokemon/captured/notes/:id
+// POST -> /pokemon/captured/:id/notes/
 router.post('/pokemon/captured/:id/notes', (req, res) => {
     const { username, loggedIn, userId } = req.session
     const theNote = req.body

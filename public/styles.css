@@ -18,9 +18,15 @@ body {
 }
 
 .show-image {
-    width: 20%;
+    width: 15%;
     margin: 0;
     padding: 0;
+}
+
+.show-image:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.2); 
 }
 
 .center {
@@ -36,6 +42,8 @@ body {
     box-shadow: 5px 5px 5px gainsboro;
     transform:scale(1.1);
 }
+
+
 
 table tr td, table tr th{
     background-color: rgba(245, 245, 245, 0) !important;
@@ -54,3 +62,4 @@ table tr td, table tr th{
     padding: 10px;
     box-shadow: 6px 4px 8px -2px;
 }
+

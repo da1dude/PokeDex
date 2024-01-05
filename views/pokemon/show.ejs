@@ -2,15 +2,13 @@
 
 <div class="container center">
     <a href="/pokemon/all" class="btn btn-warning">Back to All Pokemon</a>
-    <h2 class="text-center name-title"><%= poke.name %></h2>
+    <h4 class="text-center name-title"><%= poke.name %></h4>
     <div class="container col text-center">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png" alt="pokemon" class="show-image">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png" alt="pokemon" class="show-image show-image:hover">
     </div>
     <div style="text-align:center">
         <p><%= species[0].flavor_text %></p>
     </div>
-
-    
 
     <% if (loggedIn) {%>
     <div class="d-flex justify-content-center">

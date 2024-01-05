@@ -16,8 +16,7 @@ const notesSchema = new Schema({
     user: { type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
-    owner: { type: String }
+    }
 }, {
     timestamps: true
 })
