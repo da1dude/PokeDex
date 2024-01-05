@@ -4,12 +4,13 @@
     <div class="container center my-pokemon">
         <h2>All of <%= username %>'s Pokemon</h2>
         <hr>
-        <table class="table mt-3 table-hover">
+        <table class="table mt-3 table-hover text-center">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Nick Name</th>
                     <th scope="col">Poke Number</th>
+                    <th scope="col">Favorite</th>
                     <th scope="col">Captured On</th>
 
 
@@ -18,10 +19,11 @@
             </thead>
             <tbody>
                 <% pokemon.forEach((p) => { %>
-                    <tr class="text-capitalize">
+                    <tr class="text-capitalize text-center">
                         <td scope="row"><a href="/pokemon/captured/<%= p.id %>"><%= p.name %></a></td>
                         <td scope="row"><%= p.customName %></td>
                         <td scope="row"><%= p.number %></td>
+                        <th scope="row" class="fw-normal"><%= p.favorite ? 'Yes' : 'No' %></th>
                         <td scope="row"><%= p.createdAt.toLocaleString() %></td>
                     </tr>
                 <% }) %>

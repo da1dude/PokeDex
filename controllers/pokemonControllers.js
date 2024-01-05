@@ -192,11 +192,16 @@ router.get('/:name', (req, res) => {
     axios(`${nameSearchBaseUrl}${pokeName}`)
         // render the results on a 'show' page: aka 'detail' page
         .then(apiRes => {
-            console.log('this is apiRes.data: \n', apiRes.data)
-            // a single poke is apiRes.data
-            const foundPoke = apiRes.data
-            //res.send(foundPoke)
-            res.render('pokemon/show', { poke: foundPoke, username, loggedIn, userId })
+            //make second axios call to the species.url to grab the flavor_text (poke description)
+            axios(apiRes.data.species.url)
+            .then(speciesRes => {
+                const flavor_txt = speciesRes.data.flavor_text_entries;
+                const foundPoke = apiRes.data
+                // a single poke is apiRes.data
+                // console.log('this is apiRes.data: \n', apiRes.data)
+                // console.log('this is flavor_txt \n', flavor_txt[0])
+                res.render('pokemon/show', { species: flavor_txt, poke: foundPoke, username, loggedIn, userId })
+            })
         })
         // if we get an error, display the error
         .catch(err => {

@@ -41,6 +41,7 @@ router.post('/pokemon/captured/:id/notes', (req, res) => {
 router.delete('/notes/:id', async (req, res) => {
     const { username, loggedIn, userId } = req.session
     const poke = await Pokemon.findOne({ 'notes._id': req.params.id, 'notes.user': userId });
+    console.log('this is notes id', req.params.id)
     // Rogue user!
     if (!poke) return res.redirect(`/pokemon/captured/${poke._id}`)
     // Remove the note using the remove method available on Mongoose arrays

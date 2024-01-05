@@ -17,7 +17,7 @@ const notesSchema = new Schema({
         ref: 'User',
         required: true
     },
-    owner: { tpye: String }
+    owner: { type: String }
 }, {
     timestamps: true
 })
@@ -40,6 +40,7 @@ const pokemonSchema = new Schema({
     height: { type: String},
     weight: { type: String},
     img: { type: String},
+    description: { type: String},
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',

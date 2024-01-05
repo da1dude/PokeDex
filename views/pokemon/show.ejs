@@ -6,6 +6,9 @@
     <div class="container col text-center">
         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png" alt="pokemon" class="show-image">
     </div>
+    <div style="text-align:center">
+        <p><%= species[0].flavor_text %></p>
+    </div>
 
     
 
@@ -25,6 +28,7 @@
                 <input hidden type="text" name="height" value="<%= poke.height %>">
                 <input hidden type="text" name="weight" value="<%= poke.weight %>">
                 <input hidden type="text" name="img" value="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= poke.id %>.png">
+                <input hidden type="text" name="description" value="<%= species[0].flavor_text %>">
                 <label for="customName">Give it a name!</label>
                 <input type="text" name="customName">
                 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="on" name="favorite">
@@ -61,11 +65,6 @@
     </table>
     <hr>
     <table style="width:30%" class="table table-borderless mt-3 center table-hover">
-        <thead>
-            <tr>
-                <!-- <th>Stats</th> -->
-            </tr>
-        </thead>
         <tbody>
             <tr>
                 <th scope="row">HP</th>
