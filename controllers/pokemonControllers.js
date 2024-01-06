@@ -196,11 +196,15 @@ router.get('/:name', (req, res) => {
             axios(apiRes.data.species.url)
             .then(speciesRes => {
                 const flavor_txt = speciesRes.data.flavor_text_entries;
+                //filter flavor_txt to only include english entries
+                const english_desc = flavor_txt.filter(entry =>
+                    entry.language.name === 'en' && entry.version.name === 'ruby')
+                //bringing in apiRes.data from the first axios call to be rendered below
                 const foundPoke = apiRes.data
                 // a single poke is apiRes.data
                 // console.log('this is apiRes.data: \n', apiRes.data)
                 // console.log('this is flavor_txt \n', flavor_txt[0])
-                res.render('pokemon/show', { species: flavor_txt, poke: foundPoke, username, loggedIn, userId })
+                res.render('pokemon/show', { species: english_desc, poke: foundPoke, username, loggedIn, userId })
             })
         })
         // if we get an error, display the error
