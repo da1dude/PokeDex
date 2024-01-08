@@ -27,14 +27,18 @@ An application that lets you track the pokemon that you have captured in the wil
 ![ERD](<README Items/ERD.png>)
 
 # Technologies Used
+
 - JavaScript
 - Node.js
 - Express
 - EJS
 - CSS3
+- https://pokeapi.co/
+- bootstrap
 
-Font - TBD
+# Fonts
 
+- https://fonts.google.com/specimen/Seymour+One/tester
 
 # ICE BOX
 

@@ -3,7 +3,7 @@
 
 body {
     /* background-color: whitesmoke; */
-    background-image: url("pokemon3.webp");
+    background-image: url("/imgs/pokemon3.webp");
     background-image: cover;
     background-repeat: no-repeat;
 }
