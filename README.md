@@ -2,6 +2,9 @@
 
 An application that lets you track the pokemon that you have captured in the wild and leave notes about each of them! Organize your favorite Pokemon by favoriting them in the application for quick lookup.
 
+# App URL:
+- https://pokedex-ga1.fly.dev/
+
 # User Stories
   - As a user, I want the ability to sign up.
   - As a user, I want the ability to sign in. 
@@ -39,6 +42,10 @@ An application that lets you track the pokemon that you have captured in the wil
 # Fonts
 
 - https://fonts.google.com/specimen/Seymour+One/tester
+
+# V1 Images
+![Alt text](<Main Page - Not Logged In.png>) ![Alt text](LogIn.png) ![Alt text](<Main Page - Logged In.png>) ![Alt text](<All Pokemon.png>) ![Alt text](<Captured Pokemon.png>) ![Alt text](<Captured Pokemon Details.png>) ![Alt text](<Log Out.png>)
+
 
 # ICE BOX
 
